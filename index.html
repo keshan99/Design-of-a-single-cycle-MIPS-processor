@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>CodePen - Navigation menus using CSS flexbox</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        @import url(https://fonts.googleapis.com/css?family=Montserrat);
+        * {
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-color: #eee;
+            color: #333;
+            font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+            font-size: 1rem;
+            line-height: 1.5em;
+        }
+        
+        .pic {
+            display: flex;
+            width: 80%;
+            justify-content: center;
+            background-position: top center;
+            text-align: center;
+        }
+        
+        header,
+        section {
+            background-color: #fff;
+            margin: 0 auto 2rem;
+            padding: 1rem 2rem 2rem;
+            width: 80%;
+        }
+        
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: Montserrat, Helvetica Neue, Helvetica, Arial, sans-serif;
+            font-weight: bold;
+            line-height: 1.2em;
+            margin-bottom: 1.5rem;
+        }
+        
+        h1 {
+            font-size: 2rem;
+            text-align: center;
+        }
+        
+        h2 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        a {
+            color: #b13131;
+            text-decoration: none;
+        }
+        
+        p {
+            margin-bottom: 1.5rem;
+        }
+        
+        h2+p {
+            color: #757575;
+            font-family: Montserrat, Helvetica Neue, Helvetica, Arial, sans-serif;
+            letter-spacing: 1px;
+            margin-top: -0.5rem;
+            text-transform: uppercase;
+        }
+        
+        p code {
+            background-color: rgba(251, 175, 93, 0.25);
+            border: 1px solid rgba(0, 0, 0, 0.25);
+            border-radius: 4px;
+            display: inline-block;
+            margin: 0 0.25rem;
+            padding: 0 0.25rem;
+        }
+        
+        p.note {
+            background-color: #C4DF9B;
+            border-left: 0.5rem solid rgba(0, 0, 0, 0.25);
+            padding: 1rem;
+        }
+        
+        pre {
+            background-color: rgba(0, 0, 0, 0.75);
+            border-left: 0.5rem solid rgba(0, 0, 0, 0.5);
+            color: #FBAF5C;
+            margin: 0;
+            padding: 1rem;
+        }
+        
+        ul {
+            border-bottom: 1px solid #ccc;
+            list-style: none;
+            margin: 0 0 1.5rem 0;
+            padding: 0;
+        }
+        
+        li {
+            background-image: linear-gradient(to bottom, transparent 50%, #a2d39c 50%, #a2d39c 95%, #7cc576 95%);
+            background-size: 100% 200%;
+            background-position: top center;
+            color: #666;
+            display: block;
+            text-align: center;
+            text-decoration: none;
+            transition: all 0.25s ease-in-out;
+        }
+        
+        li:hover {
+            background-position: bottom center;
+            color: rgba(0, 0, 0, 0.75);
+        }
+        
+        li a {
+            color: #666;
+            display: block;
+            padding: 1rem 0;
+            transition: all 0.25s ease-in-out;
+        }
+        
+        .css-toggle {
+            background-color: #ddd;
+            color: #333;
+            display: block;
+            padding: 0.5rem 1rem;
+            text-decoration: none;
+            text-align: center;
+            transition: all 0.25s ease-in-out;
+        }
+        
+        .css-toggle:hover {
+            background-color: #FBAF5C;
+            color: #333;
+        }
+        
+        #sc1 ul {
+            display: flex;
+            width: 100%;
+        }
+        
+        #sc1 ul li {
+            flex: 1 1 100%;
+        }
+        
+        #sc2 ul {
+            display: flex;
+            width: 100%;
+        }
+        
+        #sc2 ul li {
+            flex: 1 1 auto;
+        }
+        
+        #sc3 {
+            display: flex;
+            justify-content: center;
+        }
+        
+        #sc3 ul {
+            display: flex;
+        }
+        
+        #sc3 ul a {
+            padding: 1rem 2rem;
+        }
+        
+        [id^=fun] ul {
+            background-color: #eee;
+            border: 0;
+            display: flex;
+            padding: 0 2rem;
+            position: relative;
+            left: -2rem;
+            width: calc(100% + 4rem);
+        }
+        
+        [id^=fun] ul li {
+            background-image: linear-gradient(to bottom, transparent 50%, #448ccb 50%, #448ccb 95%, #0072bc 95%);
+            flex: 1 1 auto;
+        }
+        
+        [id^=fun] ul li a:hover {
+            color: #eee;
+        }
+        
+        #fun1 ul li {
+            border-left: 2px solid #ddd;
+            transform: skew(-15deg);
+        }
+        
+        #fun1 ul li:last-child {
+            border-right: 2px solid #ddd;
+        }
+        
+        #fun1 ul li a {
+            transform: skew(15deg);
+        }
+        
+        #fun2 li:hover {
+            transform: scale(1.2);
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+
+</head>
+
+<body>
+    <!-- partial:index.partial.html -->
+    <header>
+        <h1>Design of a single cycle MIPS processor</h1>
+        <p>
+            <h2>Objectives:</h2>• Understanding HDL code of components of the single MIPS processor
+            <br> • Designing modules using Verilog
+            <br> • Testing HDL design of a single MIPS processor</p>
+        <img class="pic" src="/Capture.JPG" alt="">
+        <p>මේක නෙට් එකේ තිබ්බ කෝඩ් එකක් 😅😂</p>
+    </header>
+    <section>
+        <h2>alu.v</h2>
+        <p>alu</p>
+
+        <nav id="sc1">
+
+            <ul>
+                <li><a>For ModelSim</a></li>
+
+            </ul>
+        </nav>
+
+        <pre><code>
+module alu (
+    input  [31:0] srca, srcb,
+    input  [ 2:0] alucontrol ,
+    output reg [31:0] aluout ,
+    output zero 
+);
+
+    wire [31:0] not_b,b_mux,sum,slt;
+    assign not_b = ~ srcb;
+
+    assign b_mux = (1'b0 == alucontrol[2]) ? srcb : not_b;
+
+    assign sum = srca + b_mux + alucontrol[2];
+    assign slt = sum[31];
+
+    always@(*)
+    begin
+        case (alucontrol[1:0])
+            2'b00:aluout=srca & b_mux;
+            2'b01:aluout=srca | b_mux;
+            2'b10:aluout=sum;
+            2'b11:aluout=slt;
+        endcase
+    end
+
+    assign zero = (aluout==32'b0);    
+
+endmodule
+
+</code></pre>
+        <p> මේක vscode එකේ ගහද්දි timescale සහ file include කරන්න ඕන </p>
+        <p class="note">හරියට වැඩ කරහම එන photo එක යටින් තියෙනව
+            <br>
+            <br>
+            <img class="pic" src="/Capture1.JPG" alt="">
+        </p>
+        <a href="#" class="css-toggle">Show code for vscode and gtkwave</a>
+        <pre><code>
+`timescale 1ns/1ns      
+
+module alu (
+    input  [31:0] srca, srcb,
+    input  [ 2:0] alucontrol ,
+    output reg [31:0] aluout ,
+    output zero 
+);
+
+    wire [31:0] not_b,b_mux,sum,slt;
+    assign not_b = ~ srcb;
+
+    assign b_mux = (1'b0 == alucontrol[2]) ? srcb : not_b;
+
+    assign sum = srca + b_mux + alucontrol[2];
+    assign slt = sum[31];
+
+    always@(*)
+    begin
+        case (alucontrol[1:0])
+            2'b00:aluout=srca & b_mux;
+            2'b01:aluout=srca | b_mux;
+            2'b10:aluout=sum;
+            2'b11:aluout=slt;
+        endcase
+    end
+
+    assign zero = (aluout==32'b0);    
+
+endmodule
+            
+</code></pre>
+    </section>
+    <section>
+        <p class="note"> modelSim use කරන් නැතුව vscode එකෙන්ම ගහනවනම්, හැම එකටම timescale සහ file include කරන්න ඕන, නැත්නම් වැඩ කරන් නෑ, තව tb එකට dump file එකක් හදන්න code එක ගහන්නත් ඕන
+        </p>
+        <pre><code>
+        $dumpfile("testbench.vcd");
+        $dumpvars(0, testbench);
+    </code></pre>
+    </section>
+
+    <!-- partial -->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+    <script src="script.js"></script>
+    <script>
+        $(function() {
+            $('.css-toggle')
+                .next().hide()
+                .end().click(function(e) {
+                    e.preventDefault();
+
+                    if ($(this).data('toggle') == 1) {
+                        $(this).data('toggle', 0).html('Show code for vscode and gtkwave').next().slideUp();
+                    } else if (!$(this).data('toggle') || $(this).data('toggle') == 0) {
+                        $(this).data('toggle', 1).html('Hide code').next().slideDown();
+                    }
+                });
+        });
+    </script>
+
+</body>
+
+</html>
