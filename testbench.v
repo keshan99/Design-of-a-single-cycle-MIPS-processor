@@ -18,6 +18,9 @@ module testbench();
 
 
         begin
+                    $dumpfile("testbench.vcd");
+        $dumpvars(0, testbench);
+
             reset <= 1; # 22; reset <= 0;
         end
 
