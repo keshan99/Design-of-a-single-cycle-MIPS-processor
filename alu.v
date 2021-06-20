@@ -6,7 +6,22 @@ module alu (
     output [31:0] aluout,
     output        zero
 );
-    assign aluout = 2'b00;
+    always @(*) begin
+    
+        case (alucontrol)
+            3'b010: aluout <= A + B;
+            3'b110: aluout <= A - B;
+            3'b000: aluout <= A & B;
+            3'b001: aluout <= A | B;
+            3'b111: aluout <= A << B;
+            default: aluout <= 32'bx;
+        endcase
+
+    end
+
     assign zero = ~| aluout;
 
 endmodule
+
+
+
