@@ -1,3 +1,11 @@
+
+`timescale 1ns/1ns      
+
+`include "controller.v"
+`include "datapath.v"
+
+
+
 module mips(input  clk, reset,
             output  [31:0] pc,
             input  [31:0] instr,

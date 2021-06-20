@@ -1,3 +1,7 @@
+`timescale 1ns/1ns      
+
+
+
 module mux2 #(parameter WIDTH = 8)
             (input  [WIDTH-1:0] d0, d1,
             input  s,

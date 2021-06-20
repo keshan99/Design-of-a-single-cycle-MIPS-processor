@@ -1,3 +1,11 @@
+`timescale 1ns/1ns      
+
+`include "aludec.v"
+
+`include "maindec.v"
+
+
+
 module controller(  input  [5:0] op, funct,
                     input  zero,
                     output  memtoreg, memwrite,

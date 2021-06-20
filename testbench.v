@@ -1,3 +1,8 @@
+`timescale 1ns/1ns      
+
+`include "top.v"
+
+
 module testbench();
     reg clk;
     reg reset;
@@ -10,6 +15,8 @@ module testbench();
 
     // initialize test
     initial
+
+
         begin
             reset <= 1; # 22; reset <= 0;
         end
@@ -23,6 +30,8 @@ module testbench();
     // check results
     always @(negedge clk)
     begin
+
+
         if (memwrite) begin
             if (dataadr === 84 & writedata === 7) begin
                 $display("Simulation succeeded");

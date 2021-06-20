@@ -1,3 +1,7 @@
+`timescale 1ns/1ns      
+
+
+
 module maindec( input  [5:0] op,
                 output  memtoreg, memwrite,
                 output  branch, alusrc,
@@ -10,6 +14,7 @@ module maindec( input  [5:0] op,
     assign {regwrite, regdst, alusrc, branch, memwrite,
             memtoreg, jump, aluop} = controls;
     always @ (*)
+    
         case(op)
             6'b000000: controls <= 9'b110000010; // RTYPE
             6'b100011: controls <= 9'b101001000; // LW

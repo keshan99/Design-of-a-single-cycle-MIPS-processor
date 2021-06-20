@@ -1,3 +1,13 @@
+`timescale 1ns/1ns      
+
+`include "dmem.v"
+
+`include "imem.v"
+
+`include "mips.v"
+
+
+
 module top( input  clk, reset,
             output  [31:0] writedata, dataadr,
             output  memwrite);

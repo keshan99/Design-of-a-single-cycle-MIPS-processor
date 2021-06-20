@@ -1,3 +1,23 @@
+`timescale 1ns/1ns      
+`include "adder.v"
+`include "alu.v"
+
+`include "signext.v"
+`include "flopr.v"
+
+
+
+`include "mux2.v"
+`include "regfile.v"
+
+`include "sl2.v"
+
+
+
+
+
+
+
 module datapath(    input  clk, reset,
                     input  memtoreg, pcsrc,
                     input  alusrc, regdst,

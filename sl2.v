@@ -1,3 +1,7 @@
+`timescale 1ns/1ns      
+
+
+
 module sl2( input  [31:0] a,
             output  [31:0] y);
     // shift left by 2
